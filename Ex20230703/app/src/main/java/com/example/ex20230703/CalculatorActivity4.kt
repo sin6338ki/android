@@ -9,14 +9,19 @@ import android.widget.Button
 import android.widget.Toast
 
 // :(콜론) - 상속(inheritance)을 의미함
-// Calculator는 appCompat 을 상속받음
-// onCreate : main()와 유사한 기능을 하는 함수,
-//              Emulator를 실행시켰을 때 처음에 딱 한번 컴파일 되어지는 함수
+// --> CalculatorActivity4는 appCompatActivity를 상속받음
 // Bundle : 가로, 세로모드에서 텍스트를 유지
 class CalculatorActivity4 : AppCompatActivity() {
+    //override : 상위 클래스(AppCompatActivity)의 메서드를 재정의
+    //fun : 메서드
+    // onCreate : main()와 유사한 기능을 하는 함수,
+    //            Emulator를 실행시켰을 때 처음에 딱 한번 컴파일 되어지는 함수
     override fun onCreate(savedInstanceState: Bundle?) {
+        //상위 클래스에 있는 onCreate 메서드를 호출하여 화면 구성을 준비
         super.onCreate(savedInstanceState)
-        //setContentView : 어떤 화면에 기능을 달아줄건지 명시
+
+        //xml파일과 kt 파일 연결
+        //--> setContentView : 어떤 화면에 기능을 달아줄건지 명시
         //R : res (resource)
         //View를 세팅하기 이전에 findViewById를 하는건 불가능
         //NPE가 발생한다!
@@ -36,6 +41,11 @@ class CalculatorActivity4 : AppCompatActivity() {
         //--> Class에서 findViewById()
         //Id값(16진수의 랜덤한 값)을 통해서 View를 찾아온다!
         val btnPlus : Button = findViewById(R.id.btnPlus)
+        //Button 타입의 상수 btnPlus 생성 > btnPlus id값으로 찾은 View 저장
+        //변수
+        //생성(선언) : 변수명 앞에 val(상수)/var(변수) 표기, 변수명 뒤에 : 자료형 표기 (생략 가능)
+        //사용(참조) : 변수명 앞에 자료형 생략
+
         //코틀린은 자료형 추론이 가능하므로 <Button> 생략 가능
         //full code : val btnPlus : Button = findViewById<Button>(R.id.btnPlus)
 
@@ -46,10 +56,11 @@ class CalculatorActivity4 : AppCompatActivity() {
         //1. Toast창을 Emulator에 띄워보자 (문구:클릭!!)
         //2. log를 통해 확인해보자
 
+        //Listener : 이벤트를 감지하는 객체
         //onClickListener
         btnPlus.setOnClickListener {
             //it:View! View의 정보를 받아오는 매개변수
-            //btnPlus를 클릭했을 때 실행시킬 코드
+            //btnPlus를 클릭했을 때(클릭 이벤트가 발생했을 때) 실행시킬 코드 ↓↓↓
             Toast.makeText(this@CalculatorActivity4,"클릭!!",Toast.LENGTH_SHORT).show()
             //문구들이 숫자자료형을 가질 수 없음(resId만 숫자 가질수 있음)
             //CharSequence : String의 부모형
@@ -61,6 +72,5 @@ class CalculatorActivity4 : AppCompatActivity() {
             //toast.length_short - 3초 정도, log - 5초 정도
             //+show() : Toast 창이 화면에 보임
         }
-
     }
 }
