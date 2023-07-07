@@ -54,6 +54,7 @@
         android:layout_width="186dp"
         android:layout_height="94dp"
         android:backgroundTint="#CDDC39"
+        android:onClick="btnClick"
         android:text="change"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"

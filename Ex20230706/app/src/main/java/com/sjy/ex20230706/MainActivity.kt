@@ -3,22 +3,33 @@ package com.sjy.ex20230706
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
+    //필드변수 (=클래스변수 =멤버변수) : 클래스 내 메서드에서는 모두 접근할 수 있음
+    //findViewById : 뷰를 찾을 때 setContentView 되어있는 xml 안에서 찾음
+    //               -> setContentView 실행 전에 findViewById 진행하면 찾을 수 없음
+    //               -> 따라서 클래스 안에서는 변수 선언만 진행
+    // lateinit : 초기화는 나중에 진행하겠다
+    lateinit var btn1 : Button
+    lateinit var btn_change : Button
+    lateinit var edt_input : EditText
+    lateinit var tv1 : TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         // Toggle Event 실습
-        var btn1 : Button = findViewById(R.id.btn_click)
-        var btn_change : Button = findViewById(R.id.btn_change)
-
-        var edt_input : EditText = findViewById(R.id.edt_input)
-
-        var tv1 : TextView = findViewById(R.id.text_result)
+        //onCreate 안에서 변수 선언(지역변수) -> btnClick 함수에서 사용 불가능
+//        var btn1 : Button = findViewById(R.id.btn_click)
+        btn1 = findViewById(R.id.btn_click)
+        btn_change = findViewById(R.id.btn_change)
+        edt_input = findViewById(R.id.edt_input)
+        tv1 = findViewById(R.id.text_result)
 
         var isKorean : Boolean = false
         var cnt : Int = 1
@@ -62,14 +73,27 @@ class MainActivity : AppCompatActivity() {
 //            cnt++ //cnt += 1
         }
 
-        //EditText 실습
-        btn_change.setOnClickListener {
-            tv1.text = edt_input.text
+//        //EditText 실습
+//        btn_change.setOnClickListener {
+//            tv1.text = edt_input.text
+//
+//            //클릭 후 빈칸으로 만드는 방법 3가지
+//            edt_input.text = null
+//            //edt_input.text.clear()
+//            //edt_input.setText("") --> 고전적인 방법
+//        } //XML에서 Event 처리하는 코드로 고치기
+    }
 
-            //클릭 후 빈칸으로 만드는 방법 3가지
-            edt_input.text = null
-            //edt_input.text.clear()
-            //edt_input.setText("") --> 고전적인 방법
-        }
+    // ★XML로 Event 처리하는 방법
+    // 1. 버튼을 클릭했을 때 실행될 메소드 정의 (kt)
+    //  - 매개변수를 반드시 View타입으로 생성
+    // 2. XML 파일을 열어서 버튼 선택 후 onClick 속성에 메소드 연결
+
+    //java version method 생성 : public void btnClick(View currentClick){logic}
+    //kotlin version method 생성 : fun btnClick(currentClick : View){Logic}
+    fun btnClick(currentClick : View){
+        //매개변수에서 변수 생성할 때는 var 생략
+        tv1.text = edt_input.text
+        edt_input.text = null
     }
 }
