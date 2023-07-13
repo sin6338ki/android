@@ -12,3 +12,4 @@
 - <a href="https://danyoujeong.tistory.com/149">2023.07.10 [Android] 갤러리 만들기</a>
 - <a href="https://danyoujeong.tistory.com/150">2023.07.11 [Android] constraint layout</a>
 - <a href="https://danyoujeong.tistory.com/152">2023.07.12 [Android] 가로 화면 설정</a>
+- <a href="https://danyoujeong.tistory.com/155">2023.07.13 [Android] intent</a>
