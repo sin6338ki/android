@@ -6,6 +6,7 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.app.ActivityCompat
@@ -16,6 +17,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var tv_googlekakao : TextView
     lateinit var tv_sms : TextView
     lateinit var tv_call : TextView
+    lateinit var btn_next : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +27,7 @@ class MainActivity : AppCompatActivity() {
         tv_googlekakao = findViewById(R.id.tv_googlekakao)
         tv_sms = findViewById(R.id.tv_sms)
         tv_call = findViewById(R.id.tv_call)
+        btn_next = findViewById(R.id.btn_next)
 
         //클릭시 카카오 페이지로 이동 ; ACTION_VIEW
         iv_kakaopage.setOnClickListener{
@@ -91,8 +94,13 @@ class MainActivity : AppCompatActivity() {
             var it : Intent = Intent(Intent.ACTION_CALL, Uri.parse("tel:010-2776-6338"))
             //2. Intent 실행
             startActivity(it)
+        }
 
-            
+        //클릭시 다른 액티비티로 이동
+        btn_next.setOnClickListener {
+            //Intent(현재Activicty, 도착하고 싶은 Activicty)
+            var it_next : Intent = Intent(this, SubActivity::class.java)
+            startActivity(it_next)
         }
 
     }
