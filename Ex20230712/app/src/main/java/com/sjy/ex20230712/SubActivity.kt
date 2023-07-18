@@ -19,9 +19,18 @@ class SubActivity : AppCompatActivity() {
         btn_moveMain = findViewById(R.id.btn_moveMain)
         listview = findViewById(R.id.listview)
 
+        //Intent로 전달된 데이터 꺼내서 button에 끼우기
+        //getIntent => intent
+        var myIntent : Intent = intent
+        //email이 null일 수도 있으므로 ? 표시
+        var email : String? = myIntent.getStringExtra("email")
+
+        btn_moveMain.text = email + "님 종료하시겠습니까?"
+
         btn_moveMain.setOnClickListener {
 //            var it_moveMain : Intent = Intent(this, MainActivity::class.java)
 //            startActivity(it_moveMain) //새로운 Activity를 Task에 쌓는 명령
+
                 finish() //Activity 삭제
         }
 

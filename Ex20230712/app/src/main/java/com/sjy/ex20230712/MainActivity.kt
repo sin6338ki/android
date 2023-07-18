@@ -7,8 +7,10 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
 
 class MainActivity : AppCompatActivity() {
@@ -18,16 +20,33 @@ class MainActivity : AppCompatActivity() {
     lateinit var tv_sms : TextView
     lateinit var tv_call : TextView
     lateinit var btn_next : Button
+    lateinit var edt_email : EditText
+    lateinit var edt_pw : EditText
+    val email : String = "hello"
+    val pw : String = "12345"
+
+    lateinit var members : HashMap<String, String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        //members = new HashMap() => HashMap 객체 생성
+        members = HashMap()
+        members.put("wldud", "0616")
+        members.put("jiyoung", "6338")
+        members.put("smhrd", "12345")
+        members.put("K", "11111")
+        members.put("sjy", "93")
+
         //                          Int 주소 반환
         iv_kakaopage = findViewById(R.id.iv_kakaopage)
         tv_googlekakao = findViewById(R.id.tv_googlekakao)
         tv_sms = findViewById(R.id.tv_sms)
         tv_call = findViewById(R.id.tv_call)
         btn_next = findViewById(R.id.btn_next)
+        edt_email = findViewById(R.id.edt_email)
+        edt_pw = findViewById(R.id.edt_pw)
 
         //클릭시 카카오 페이지로 이동 ; ACTION_VIEW
         iv_kakaopage.setOnClickListener{
@@ -99,8 +118,24 @@ class MainActivity : AppCompatActivity() {
         //클릭시 다른 액티비티로 이동
         btn_next.setOnClickListener {
             //Intent(현재Activicty, 도착하고 싶은 Activicty)
-            var it_next : Intent = Intent(this, SubActivity::class.java)
-            startActivity(it_next)
+            var inputEmail = edt_email.text.toString()
+            var inputPw = edt_pw.text.toString()
+
+            //1. id가 존재하는지 확인
+            //  arrayList -> 반복문으로 확인했음
+            //  HashMap -> containsKey()
+            if(members.containsKey(inputEmail)){
+                if(members.get(inputEmail).equals(inputPw)){
+                    var it_next : Intent = Intent(this, SubActivity::class.java)
+                    //intent에 값 담아주기
+                    it_next.putExtra("email", inputEmail)
+                    startActivity(it_next)
+                }else{
+                    Toast.makeText(applicationContext, "패스워드가 틀립니다!", Toast.LENGTH_SHORT).show()
+                }
+            }else{
+                Toast.makeText(applicationContext, "존재하지 않는 아이디입니다.", Toast.LENGTH_SHORT).show()
+            }
         }
 
     }
