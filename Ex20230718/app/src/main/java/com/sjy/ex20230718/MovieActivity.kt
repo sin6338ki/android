@@ -43,11 +43,12 @@ class MovieActivity : AppCompatActivity() {
                 {
                     response ->
                     Log.d("response", response.toString())
-                    val result = JSONObject(response)
+                    val result = JSONObject(response) //파싱하기 쉽게 JSONObject 형태로 변환
                     val movie = result.getJSONObject("boxOfficeResult").getJSONArray("dailyBoxOfficeList")
                     //영화순위
                     for(i in 0 until movie.length()){
                         val movieItem = movie.get(i) as JSONObject
+                        //              movie.getJSONObject(i) 로도 뽑을 수 있음
                         val rank = movieItem.getString("rank")
                         val mvName = movieItem.getString("movieNm")
                         val openDt = movieItem.getString("openDt")
@@ -55,9 +56,11 @@ class MovieActivity : AppCompatActivity() {
 //                        Log.d("영화명", mvName.toString())
 //                        Log.d("개봉일", openDt.toString())
                         movieList.add(MovieVO(rank, mvName, openDt))
-                        val adaptor = ArrayAdapter<MovieVO>(applicationContext, android.R.layout.simple_list_item_1, movieList)
-                        lvMovie.adapter = adaptor
                     }
+
+                    val adaptor = ArrayAdapter<MovieVO>(applicationContext, android.R.layout.simple_list_item_1, movieList)
+                    lvMovie.adapter = adaptor
+
                 },
                 {
                     error ->
@@ -65,6 +68,10 @@ class MovieActivity : AppCompatActivity() {
                     Toast.makeText(this, "error 발생", Toast.LENGTH_SHORT).show()
                 }
             )
+
+            //여러번 요청할 경우 캐시 데이터 누적됨
+            //이전 결과가 있어도 새로 요청하여 응답을 보여주고 싶을 경우에 사용
+            request.setShouldCache(false)
             reqQueue.add(request)
         }
 

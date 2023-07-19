@@ -4,18 +4,21 @@ import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import androidx.activity.result.contract.ActivityResultContracts
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var btn_bgcolor:Button
+    lateinit var main : View
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         btn_bgcolor = findViewById(R.id.btn_bgcolor)
+        main = findViewById(R.id.bg)
 
         btn_bgcolor.setOnClickListener {
             //startActivity => 편도
@@ -39,13 +42,12 @@ class MainActivity : AppCompatActivity() {
             val color = it.data!!.getIntExtra("color", -1) //!! : not null일때만 실행
 
             if(color == 0){
-                btn_bgcolor.setBackgroundColor(Color.RED)
+                main.setBackgroundColor(Color.RED)
             }else if(color == 1){
-                btn_bgcolor.setBackgroundColor(Color.GREEN)
+                main.setBackgroundColor(Color.GREEN)
             }else{
-                btn_bgcolor.setBackgroundColor(Color.BLUE)
+                main.setBackgroundColor(Color.BLUE)
             }
         }
-        //3.
     }
 }
