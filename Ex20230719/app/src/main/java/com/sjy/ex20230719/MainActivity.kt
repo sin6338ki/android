@@ -3,6 +3,7 @@ package com.sjy.ex20230719
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ListView
@@ -48,7 +49,7 @@ class MainActivity : AppCompatActivity() {
             val id = it.data!!.getStringExtra("id")
 
             tv_loginCk.text = id + "님 환영합니다!"
-            btn_write.isVisible = true
+            btn_write.visibility = View.VISIBLE
             btn_login.text = "로그아웃"
         }
     }

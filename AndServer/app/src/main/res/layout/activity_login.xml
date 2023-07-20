@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".LoginActivity">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="150dp"
-        android:text="회원가입"
+        android:text="로그인"
         android:textAlignment="center"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -46,43 +46,17 @@
         app:layout_constraintStart_toStartOf="@+id/etLoginId"
         app:layout_constraintTop_toBottomOf="@+id/etLoginId" />
 
-    <EditText
-        android:id="@+id/etTel"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="tel"
-        android:inputType="phone"
-        app:layout_constraintEnd_toEndOf="@+id/etLoginPw"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/etLoginPw"
-        app:layout_constraintTop_toBottomOf="@+id/etLoginPw" />
-
-    <EditText
-        android:id="@+id/etBirth"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="BirthDay(yyyy.MM.dd)"
-        android:inputType="date"
-        app:layout_constraintEnd_toEndOf="@+id/etTel"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/etTel"
-        app:layout_constraintTop_toBottomOf="@+id/etTel" />
-
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="회원가입"
+        android:text="로그인"
         android:textSize="18sp"
         app:cornerRadius="0dp"
-        app:layout_constraintEnd_toEndOf="@+id/etBirth"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/etBirth"
-        app:layout_constraintTop_toBottomOf="@+id/etBirth" />
+        app:layout_constraintEnd_toEndOf="@+id/etLoginPw"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/etLoginPw"
+        app:layout_constraintTop_toBottomOf="@+id/etLoginPw" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

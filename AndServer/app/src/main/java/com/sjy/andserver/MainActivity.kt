@@ -1,10 +1,12 @@
 package com.sjy.andserver
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.StringRequest
@@ -25,9 +27,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        btnSubmit = findViewById(R.id.btnSubmit)
-        etId = findViewById(R.id.etId)
-        etPw = findViewById(R.id.etPw)
+        btnSubmit = findViewById(R.id.btnLogin)
+        etId = findViewById(R.id.etLoginId)
+        etPw = findViewById(R.id.etLoginPw)
         etTel = findViewById(R.id.etTel)
         etBirth = findViewById(R.id.etBirth)
 
@@ -49,10 +51,17 @@ class MainActivity : AppCompatActivity() {
 
                 Request.Method.POST,
                 //manifest.xml -> android:usesCleartextTraffic="true" 추가해야함!
-                "http://172.30.1.42:8888/join", //http 요청
+                "http://172.30.1.42:8089/join", //http 요청
                 {
                     response ->
                     Log.d("response", response.toString())
+                    if(response == "success"){
+                        //Login Activity로 전환
+                        var it_login : Intent = Intent(this, LoginActivity::class.java)
+                        startActivity(it_login)
+                    }else{
+                        Toast.makeText(this, "회원가입 실패", Toast.LENGTH_SHORT).show()
+                    }
                 },
                 {
                     error ->

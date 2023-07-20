@@ -36,7 +36,7 @@ class LoginActivity : AppCompatActivity() {
 
             if(members.containsKey(id)){
                 if(members.get(id).equals(pw)){
-                    var it : Intent = Intent(this, MainActivity::class.java)
+                    var it : Intent = Intent()
                     it.putExtra("id", id)
                     setResult(RESULT_OK, it)
                     finish()
