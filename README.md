@@ -19,3 +19,6 @@
 - <a href="https://danyoujeong.tistory.com/158">2023.07.14 [Android] listview 만들기</a>
 - <a href="https://danyoujeong.tistory.com/159">2023.07.18 [Android] HTTP 통신 - Volley</a>
 - <a href="https://danyoujeong.tistory.com/160">2023.07.18 [Android] intent & listView 심화</a>
+- <a href="https://danyoujeong.tistory.com/161">2023.07.19~20 [Android] POST 방식 통신</a>
+- <a href="https://danyoujeong.tistory.com/162">2023.07.19 [Android] JSON, GSON</a>
+- <a href="https://danyoujeong.tistory.com/163">2023.07.19 [Android] visibility & enabled 속성</a>
