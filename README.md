@@ -22,3 +22,4 @@
 - <a href="https://danyoujeong.tistory.com/161">2023.07.19~20 [Android] POST 방식 통신</a>
 - <a href="https://danyoujeong.tistory.com/162">2023.07.19 [Android] JSON, GSON</a>
 - <a href="https://danyoujeong.tistory.com/163">2023.07.19 [Android] visibility & enabled 속성</a>
+- <a href="https://danyoujeong.tistory.com/165">2023.07.20, 24 [Android] RecyclerView</a>
