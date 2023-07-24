@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity() {
                     Log.d("error", error.toString())
                 }
 
-            ){
+            ){R
                 //post : 데이터를 같이 보내기 위해 작성하는 부분
                 //                              반환타입
                 override fun getParams() : MutableMap<String, String>{
