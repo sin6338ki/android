@@ -44,9 +44,9 @@ class PokemonAdapter(var datas:ArrayList<PokemonVO>, var context:Context) : Recy
             //pokemonID -> Int
             //pokemonImgPath -> String
             //pokemonNm -> String
-            intent.putExtra("id", pokemon.pokemonId)
-            intent.putExtra("imgUrl", pokemon.pokemonImgPath)
-            intent.putExtra("name", pokemon.pokemonNm)
+            intent.putExtra("id", pokemon.pokemonId.toInt())
+            intent.putExtra("imgUrl", pokemon.pokemonImgPath.toString())
+            intent.putExtra("name", pokemon.pokemonNm.toString())
             context.startActivity(intent)
         }
 

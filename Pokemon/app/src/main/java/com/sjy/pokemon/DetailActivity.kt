@@ -60,12 +60,14 @@ class DetailActivity : AppCompatActivity() {
         //result.getDouble("weight") 무게
         //result.getDouble("height") 크기
 
+        Glide.with(this).load(imgUrl).into(ivPokemon)
+        tvName.text = name
+
         val request = object : StringRequest(
             Request.Method.GET,
             "https://pokeapi.co/api/v2/pokemon/$id",
             {
                 response ->
-//                Log.d("response", response.toString())
                 val result = JSONObject(response)
                 val type = result.getJSONArray("types")
                 var type1 : String = ""
@@ -81,16 +83,10 @@ class DetailActivity : AppCompatActivity() {
                 val weight = result.getDouble("weight")
                 val height = result.getDouble("height")
 
-                Glide.with(this).load(imgUrl).into(ivPokemon)
-                tvName.text = name
-
                 tvType1.text = type1
                 tvType2.text = type2
                 tvWeight.text = weight.toString() + "kg"
                 tvHeight.text = height.toString() + "m"
-
-//                val typeList = arrayOf("normal", "fire", "water", "grass", "electric", "ice", "poison", "bug")
-                //HashMap
 
                 val typeList = HashMap<String, Int>()
                 typeList.put("electric", Color.rgb(255,255,102))
