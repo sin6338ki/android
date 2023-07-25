@@ -23,3 +23,4 @@
 - <a href="https://danyoujeong.tistory.com/162">2023.07.19 [Android] JSON, GSON</a>
 - <a href="https://danyoujeong.tistory.com/163">2023.07.19 [Android] visibility & enabled 속성</a>
 - <a href="https://danyoujeong.tistory.com/165">2023.07.20, 24 [Android] RecyclerView</a>
+- <a href="https://danyoujeong.tistory.com/166">2023.07.24~25 [Android] 포켓몬 도감 만들기 (Volley, RecyclerView)</a>
