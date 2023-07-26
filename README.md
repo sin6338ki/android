@@ -1,5 +1,3 @@
-![image](https://github.com/sin6338ki/android/assets/130349912/fd5f0e6f-d90d-4a20-8d72-74d5abee8d72)# android
-
 ## Kotlin
 <a href="https://danyoujeong.tistory.com/138">Kotlin 객체 지향 정리</a>
 
