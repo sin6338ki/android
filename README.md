@@ -1,4 +1,4 @@
-# android
+![image](https://github.com/sin6338ki/android/assets/130349912/fd5f0e6f-d90d-4a20-8d72-74d5abee8d72)# android
 
 ## Kotlin
 <a href="https://danyoujeong.tistory.com/138">Kotlin 객체 지향 정리</a>
@@ -25,3 +25,4 @@
 - <a href="https://danyoujeong.tistory.com/165">2023.07.20, 24 [Android] RecyclerView</a>
 - <a href="https://danyoujeong.tistory.com/166">2023.07.24~25 [Android] 포켓몬 도감 만들기 (Volley, RecyclerView)</a>
 - <a href="https://danyoujeong.tistory.com/167">2023.07.25 [Android] 프래그먼트(Fragment)</a>
+- <a href="https://danyoujeong.tistory.com/168">2023.07.26 [Android] 폰트적용</a>
