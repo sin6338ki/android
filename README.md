@@ -26,3 +26,4 @@
 - <a href="https://danyoujeong.tistory.com/166">2023.07.24~25 [Android] 포켓몬 도감 만들기 (Volley, RecyclerView)</a>
 - <a href="https://danyoujeong.tistory.com/167">2023.07.25 [Android] 프래그먼트(Fragment)</a>
 - <a href="https://danyoujeong.tistory.com/168">2023.07.26 [Android] 폰트적용</a>
+- <a href="https://danyoujeong.tistory.com/169">2023.07.26 [Android] android studio 로딩 화면 설정</a>
