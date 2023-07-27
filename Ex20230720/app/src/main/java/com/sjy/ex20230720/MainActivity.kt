@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
@@ -34,6 +35,7 @@ class MainActivity : AppCompatActivity() {
     //목적 : Android 개발자가 서버를 구현하는 번거로움을 해소
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -53,13 +55,11 @@ class MainActivity : AppCompatActivity() {
         val myRef = database.getReference("message")
         //해당 경로에 데이터 저장하기
 
-
 //        data.add(KakaoVO(R.drawable.img1, "지영", "밥먹쟈", "오전 9:20"))
-        myRef.push().setValue(KakaoVO(R.drawable.img2, "지희", "뭐먹을랭", "오전 10:30"))
-        myRef.push().setValue(KakaoVO(R.drawable.img3, "현록", "타마곡ㄱㄱ", "오전 10:40"))
-        myRef.push().setValue(KakaoVO(R.drawable.img4, "지훈", "ㅇㅋㅇㅋ", "오전 11:30"))
-        myRef.push().setValue(KakaoVO(R.drawable.img5, "혁", "굿", "오후 12:30"))
-
+//        myRef.push().setValue(KakaoVO(R.drawable.img2, "지희", "뭐먹을랭", "오전 10:30"))
+//        myRef.push().setValue(KakaoVO(R.drawable.img3, "현록", "타마곡ㄱㄱ", "오전 10:40"))
+//        myRef.push().setValue(KakaoVO(R.drawable.img4, "지훈", "ㅇㅋㅇㅋ", "오전 11:30"))
+//        myRef.push().setValue(KakaoVO(R.drawable.img5, "혁", "굿", "오후 12:30"))
 
         var adapter : KakaoAdapter = KakaoAdapter(applicationContext, R.layout.template, data)
 
@@ -68,6 +68,10 @@ class MainActivity : AppCompatActivity() {
         rv.adapter = adapter
 
         btn_send.setOnClickListener{
+            myRef.push().setValue(KakaoVO(R.drawable.img2, "지희", "뭐먹을랭", "오전 10:30"))
+            myRef.push().setValue(KakaoVO(R.drawable.img3, "현록", "타마곡ㄱㄱ", "오전 10:40"))
+            myRef.push().setValue(KakaoVO(R.drawable.img4, "지훈", "ㅇㅋㅇㅋ", "오전 11:30"))
+            myRef.push().setValue(KakaoVO(R.drawable.img5, "혁", "굿", "오후 12:30"))
             data.add(KakaoVO(R.drawable.img1, "나", edt.text.toString(), "오전 13:00"))
             //adapter 새로고침
             adapter.notifyDataSetChanged()
@@ -75,6 +79,8 @@ class MainActivity : AppCompatActivity() {
             //스크롤을 원하는 위치로 이동시키기
             rv.smoothScrollToPosition(data.size-1)
         }
+
+        myRef.addChildEventListener(ChildEvent(data, adapter))
 
     }
 }

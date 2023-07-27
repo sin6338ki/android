@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".LoginActivity">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:fontFamily="@font/leferi"
+        android:text="Universe Login"
+        android:textColor="#FFFFFF"
+        android:textSize="28dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/etLoginId"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="30dp"
+        android:ems="10"
+        android:fontFamily="@font/pretendard"
+        android:hint="ID"
+        android:inputType="text"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#CDCDCD"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <EditText
+        android:id="@+id/etLoginPw"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:fontFamily="@font/pretendard"
+        android:hint="PASSWORD"
+        android:inputType="textPassword"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#CDCDCD"
+        app:layout_constraintEnd_toEndOf="@+id/etLoginId"
+        app:layout_constraintStart_toStartOf="@+id/etLoginId"
+        app:layout_constraintTop_toBottomOf="@+id/etLoginId" />
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#B1B1B1"
+        android:fontFamily="@font/pretendard"
+        android:text="LOGIN"
+        app:layout_constraintEnd_toEndOf="@+id/etLoginPw"
+        app:layout_constraintStart_toStartOf="@+id/etLoginPw"
+        app:layout_constraintTop_toBottomOf="@+id/etLoginPw" />
+</androidx.constraintlayout.widget.ConstraintLayout>

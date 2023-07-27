@@ -27,6 +27,7 @@ class Fragment2 : Fragment() {
             url = etUrl.text.toString()
             //url값 저장하기 (SharedPreference -> 내부 메모리에 저장 -> 모든 fragment에서 사용가능)
             //  - editor 사용
+            // 자동 로그인에 활용 가능!! (어플을 꺼도 계속 저장됨)
             val spf = requireActivity().getSharedPreferences("mySPF",Context.MODE_PRIVATE)
             //MODE_PRIVATE : 내부 캐시에 저장 -> 저장된 값이 노출되지 않도록
             val editor = spf.edit() //에디터 생성
