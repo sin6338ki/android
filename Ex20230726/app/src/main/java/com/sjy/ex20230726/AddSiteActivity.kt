@@ -26,6 +26,8 @@ class AddSiteActivity : AppCompatActivity() {
             var intent = Intent()
             val favorite = SiteVO(etTitle.text.toString(), etAdd.text.toString())
             intent.putExtra("favorite", Gson().toJson(favorite))
+
+            //title과 url이 비어있지 않은지 검사하면 더 좋음
             setResult(RESULT_OK, intent)
             finish()
         }

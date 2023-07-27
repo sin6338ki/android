@@ -1,59 +1,67 @@
 package com.sjy.fragment
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.android.volley.Request
+import com.android.volley.RequestQueue
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
+import com.google.gson.Gson
+import com.sjy.fragment.VO.BoardVO
+import org.json.JSONArray
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [Fragment3.newInstance] factory method to
- * create an instance of this fragment.
- */
 class Fragment3 : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
-
+    lateinit var reqQueue : RequestQueue
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_3, container, false)
-    }
+        var view = inflater.inflate(R.layout.fragment_3, container, false)
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment Fragment3.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            Fragment3().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+        var rcBoard : RecyclerView = view.findViewById(R.id.rcBoard)
+        var btnWriteAct : Button = view.findViewById(R.id.btnWriteAct)
+
+        reqQueue = Volley.newRequestQueue(requireActivity())
+
+        var posts = ArrayList<BoardVO>()
+        
+//        posts.add(BoardVO("1", "test1", "안녕", "id1", null, 10))
+//        posts.add(BoardVO("2", "test2", "안녕", "id2", null, 6))
+//        posts.add(BoardVO("3", "test3", "안녕", "id3", null, 16))
+//        posts.add(BoardVO("4", "test4", "안녕", "id4", null, 18))
+//        posts.add(BoardVO("5", "test5", "안녕", "id5", null, 30))
+//        posts.add(BoardVO("6", "test6", "안녕", "id6", null, 30))
+
+        val request = object : StringRequest(
+            Request.Method.GET,
+            "http://172.30.1.42:8888/board",
+            {
+                response ->
+//                Log.d("response", response.toString())
+                var result = JSONArray(response)
+                for(i in 0 until result.length()){
+                    val bvo : BoardVO = Gson().fromJson(result.getJSONObject(i).toString(), BoardVO::class.java)
+                    posts.add(bvo)
                 }
+                var adapter : BoardAdapter = BoardAdapter(view.context, R.layout.board_item, posts)
+                rcBoard.layoutManager = LinearLayoutManager(requireActivity())
+                rcBoard.adapter = adapter
+            },
+            {
+                error ->
+                Log.d("error", error.toString())
             }
+        ){}
+        reqQueue.add(request)
+
+        return view
     }
 }

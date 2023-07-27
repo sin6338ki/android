@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity() {
                 isLogin = true
             }else{
                 //로그인 기록 삭제
-                editor.remove("mySPF")
+                editor.remove("member")
 //                editor.clear() //전체 삭제
                 editor.commit()
                 var loginIntent = Intent(this, LoginActivity::class.java)

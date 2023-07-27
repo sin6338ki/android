@@ -34,8 +34,6 @@ class MainActivity : AppCompatActivity() {
     //구글에서 일정량의 저장소와 서버를 구축해두고 Android 개발자에게 제공하는 서비스
     //목적 : Android 개발자가 서버를 구현하는 번거로움을 해소
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -48,18 +46,11 @@ class MainActivity : AppCompatActivity() {
         edt = findViewById(R.id.edt_message)
         btn_send = findViewById(R.id.btn_send)
 
-        // Write a message to the database
         //App에 연결되어 있는 FireBase DataBase 객체 가져오기
         val database = Firebase.database
         //DataBase 경로 가져오기
         val myRef = database.getReference("message")
         //해당 경로에 데이터 저장하기
-
-//        data.add(KakaoVO(R.drawable.img1, "지영", "밥먹쟈", "오전 9:20"))
-//        myRef.push().setValue(KakaoVO(R.drawable.img2, "지희", "뭐먹을랭", "오전 10:30"))
-//        myRef.push().setValue(KakaoVO(R.drawable.img3, "현록", "타마곡ㄱㄱ", "오전 10:40"))
-//        myRef.push().setValue(KakaoVO(R.drawable.img4, "지훈", "ㅇㅋㅇㅋ", "오전 11:30"))
-//        myRef.push().setValue(KakaoVO(R.drawable.img5, "혁", "굿", "오후 12:30"))
 
         var adapter : KakaoAdapter = KakaoAdapter(applicationContext, R.layout.template, data)
 
@@ -67,20 +58,19 @@ class MainActivity : AppCompatActivity() {
         rv.layoutManager = LinearLayoutManager(applicationContext) //목록형
         rv.adapter = adapter
 
+        myRef.addChildEventListener(ChildEvent(data, adapter))
+
         btn_send.setOnClickListener{
-            myRef.push().setValue(KakaoVO(R.drawable.img2, "지희", "뭐먹을랭", "오전 10:30"))
-            myRef.push().setValue(KakaoVO(R.drawable.img3, "현록", "타마곡ㄱㄱ", "오전 10:40"))
-            myRef.push().setValue(KakaoVO(R.drawable.img4, "지훈", "ㅇㅋㅇㅋ", "오전 11:30"))
-            myRef.push().setValue(KakaoVO(R.drawable.img5, "혁", "굿", "오후 12:30"))
-            data.add(KakaoVO(R.drawable.img1, "나", edt.text.toString(), "오전 13:00"))
+            myRef.push().setValue(KakaoVO(R.drawable.img2, "나", edt.text.toString(), "오전 10:30"))
+//            myRef.push().setValue(KakaoVO(R.drawable.img3, "현록", "타마곡ㄱㄱ", "오전 10:40"))
+//            myRef.push().setValue(KakaoVO(R.drawable.img4, "지훈", "ㅇㅋㅇㅋ", "오전 11:30"))
+//            myRef.push().setValue(KakaoVO(R.drawable.img5, "혁", "굿", "오후 12:30"))
+
             //adapter 새로고침
             adapter.notifyDataSetChanged()
             edt.text.clear()
             //스크롤을 원하는 위치로 이동시키기
             rv.smoothScrollToPosition(data.size-1)
         }
-
-        myRef.addChildEventListener(ChildEvent(data, adapter))
-
     }
 }

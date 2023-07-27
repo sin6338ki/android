@@ -23,10 +23,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        data.add(SiteVO("네이버", "http://www.naver.com"))
-        data.add(SiteVO("유튜브", "http://www.youtube.com"))
-        data.add(SiteVO("구글", "http://www.google.com"))
-        data.add(SiteVO("SMHRD", "http://www.smhrd.or.kr"))
+        data.add(SiteVO("네이버", "https://www.naver.com"))
+        data.add(SiteVO("유튜브", "https://www.youtube.com"))
+        data.add(SiteVO("구글", "https://www.google.com"))
+        data.add(SiteVO("SMHRD", "https://www.smhrd.or.kr"))
 
         rv = findViewById(R.id.rv)
         btnAdd = findViewById(R.id.btnAdd)
@@ -45,7 +45,6 @@ class MainActivity : AppCompatActivity() {
     var frLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
         if(it.resultCode == RESULT_OK){
             val favorite = it.data!!.getStringExtra("favorite")
-            Log.d("favorite", favorite.toString())
             val favoriteVO = Gson().fromJson(favorite, SiteVO::class.java)
             data.add(favoriteVO)
             adapter.notifyDataSetChanged()

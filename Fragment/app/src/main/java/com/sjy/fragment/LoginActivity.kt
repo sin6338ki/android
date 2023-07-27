@@ -33,6 +33,12 @@ class LoginActivity : AppCompatActivity() {
 
         reqQueue = Volley.newRequestQueue(this)
 
+        //SharedPreference에 로그인 정보 저장
+        //sharedpreference 생성
+        val spf = getSharedPreferences("mySPF", Context.MODE_PRIVATE)
+        val test = spf.getString("member", "")
+        Log.d("member", test.toString())
+
         btnLogin.setOnClickListener{
             val inputId = etLoginId.text.toString()
             val inputPw = etLongPw.text.toString()
@@ -47,10 +53,6 @@ class LoginActivity : AppCompatActivity() {
                         Toast.makeText(this, "회원정보가 일치하지 않습니다", Toast.LENGTH_SHORT).show()
                     } else {
                         val member = JSONArray(response).getJSONObject(0)
-
-                        //SharedPreference에 로그인 정보 저장
-                        //sharedpreference 생성
-                        val spf = getSharedPreferences("mySPF", Context.MODE_PRIVATE)
                         //editor 생성
                         val editor = spf.edit()
                         //editor를 통해서 현재 로그인한 회원의 정보를 저장

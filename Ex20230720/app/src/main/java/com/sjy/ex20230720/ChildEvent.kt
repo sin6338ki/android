@@ -9,13 +9,15 @@ class ChildEvent(var data : ArrayList<KakaoVO>, var adapter : KakaoAdapter): Chi
 
     override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
         //데이터 추가 감지
+        //snapshot => firebase에 저장된 데이터
+        //json구조로 응답함 => KakaoVO 형태로 변환
+        var temp : KakaoVO? = snapshot.getValue(KakaoVO::class.java)
+        data.add(temp!!) //!! : not null 단정
+
     }
 
     override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
         //데이터 변화 감지
-        //ArrayList에 추가된 데이터 추가하고 Adapter 새로고침
-        data.add(snapshot.getValue(KakaoVO::class.java) as KakaoVO)
-        adapter.notifyDataSetChanged()
     }
 
     override fun onChildRemoved(snapshot: DataSnapshot) {
