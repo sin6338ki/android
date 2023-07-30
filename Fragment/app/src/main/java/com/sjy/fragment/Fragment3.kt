@@ -1,5 +1,6 @@
 package com.sjy.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -28,6 +29,13 @@ class Fragment3 : Fragment() {
 
         var rcBoard : RecyclerView = view.findViewById(R.id.rcBoard)
         var btnWriteAct : Button = view.findViewById(R.id.btnWriteAct)
+
+        btnWriteAct = view.findViewById(R.id.btnWriteAct)
+
+        btnWriteAct.setOnClickListener {
+            val intent = Intent(requireActivity(), BoardWriteActivity::class.java)
+            startActivity(intent)
+        }
 
         reqQueue = Volley.newRequestQueue(requireActivity())
 

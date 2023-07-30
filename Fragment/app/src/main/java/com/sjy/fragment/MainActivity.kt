@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var btnMoveLogin : Button
     lateinit var tvId : TextView
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

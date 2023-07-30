@@ -36,6 +36,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:ems="10"
+        android:fontFamily="@font/pretendard"
         android:inputType="text"
         app:layout_constraintBottom_toBottomOf="@+id/textView4"
         app:layout_constraintEnd_toEndOf="parent"
@@ -58,6 +59,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
+        android:fontFamily="@font/pretendard"
         android:text="내용"
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="@+id/textView4"
@@ -69,6 +71,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:ems="10"
+        android:fontFamily="@font/pretendard"
         android:gravity="start|top"
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="@+id/etTitle"
@@ -137,6 +140,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_weight="1"
+            android:fontFamily="@font/pretendard"
             android:text="글작성" />
     </LinearLayout>
 
